@@ -36,10 +36,11 @@ with tabs[0]:
 
     st.button("🔄 New Game", on_click=reset_game)
 
-    if not st.session_state.game_log:
-        st.info("Your turn! Start with any word.")
-    else:
-        st.markdown(f"**App's word:** `{st.session_state.app_word}`")
+if not st.session_state.game_log:
+    st.info("Your turn! Start with any word.")
+else:
+    st.markdown("### App's Last Word")
+    st.success(f"`{st.session_state.app_word}`" if st.session_state.app_word else "The app couldn't go — you win!")
 
     # Start turn
     with st.form("word_turn"):
