@@ -137,7 +137,7 @@ with tabs[1]:
     st.markdown(f"### {heroes[st.session_state.mcu_hero]} Theo vs J.A.R.V.I.S.")
 
     if st.session_state.mcu_hero in heroes:
-    st.markdown(f"### {heroes[st.session_state.mcu_hero]} Theo vs J.A.R.V.I.S.")
+        st.markdown(f"### {heroes[st.session_state.mcu_hero]} Theo vs J.A.R.V.I.S.")
         st.success(f"`{st.session_state.mcu_app_word}`")
 
     with st.form("mcu_turn"):
