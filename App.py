@@ -139,7 +139,14 @@ if not st.session_state.get("mcu_hero"):
 hero_key = st.session_state.get("mcu_hero")
 if hero_key in heroes:
     st.markdown(f"### {heroes[hero_key]} Theo vs J.A.R.V.I.S.")
-        st.success(f"`{st.session_state.mcu_app_word}`")
+# === Show app’s last word ===
+hero_key = st.session_state.get("mcu_hero")
+if hero_key in heroes:
+    st.markdown(f"### {heroes[hero_key]} Theo vs J.A.R.V.I.S.")
+
+if st.session_state.get("mcu_app_word"):
+    st.markdown("### J.A.R.V.I.S.'s Word")
+    st.success(f"`{st.session_state.mcu_app_word}`")
 
     with st.form("mcu_turn"):
         word = st.text_input("Your MCU word:")
