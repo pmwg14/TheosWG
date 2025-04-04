@@ -125,19 +125,20 @@ with tabs[1]:
 
     st.button("🔁 New Battle", on_click=reset_mcu)
 
-    if not st.session_state.mcu_hero:
-        st.markdown("### Choose your hero:")
-        hero_choice = st.selectbox("Who will you play as?", list(heroes.keys()))
-        if st.button("Confirm Hero"):
-            st.session_state.mcu_hero = hero_choice
-            st.success(f"{heroes[hero_choice]} You are now {hero_choice}!")
-            st.balloons()
-            st.stop()
+# === Hero selection ===
+if not st.session_state.get("mcu_hero"):
+    st.markdown("### Choose your hero:")
+    hero_choice = st.selectbox("Who will you play as?", list(heroes.keys()))
+    if st.button("Confirm Hero"):
+        st.session_state.mcu_hero = hero_choice
+        st.success(f"{heroes[hero_choice]} You are now {hero_choice}!")
+        st.balloons()
+        st.stop()
 
-        st.markdown(f"### {heroes[st.session_state.mcu_hero]} Theo vs J.A.R.V.I.S.")
-
-    if st.session_state.mcu_hero in heroes:
-        st.markdown(f"### {heroes[st.session_state.mcu_hero]} Theo vs J.A.R.V.I.S.")
+# === Header display AFTER hero is selected ===
+hero_key = st.session_state.get("mcu_hero")
+if hero_key in heroes:
+    st.markdown(f"### {heroes[hero_key]} Theo vs J.A.R.V.I.S.")
         st.success(f"`{st.session_state.mcu_app_word}`")
 
     with st.form("mcu_turn"):
